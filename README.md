@@ -1,3 +1,6 @@
+[![RSpec](https://github.com/kigster/thread_unsafe/actions/workflows/rspec.yml/badge.svg)](https://github.com/kigster/thread_unsafe/actions/workflows/rspec.yml)
+[![Rubocop](https://github.com/kigster/thread_unsafe/actions/workflows/rubocop.yml/badge.svg)](https://github.com/kigster/thread_unsafe/actions/workflows/rubocop.yml)
+
 # ThreadUnsafe
 
 This gem contains various experimens with thread safe and thread-unsafe code with rspecs. Consider it a playground to verify thread safety and observe race conditions.
