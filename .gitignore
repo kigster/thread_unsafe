@@ -1,0 +1,28 @@
+## MAC OS
+.DS_Store
+.idea/
+kigster.repositories.*
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+
+## PROJECT::SPECIFIC
+.yardoc
+.ruby-version
+*.csv
+.envrc.local
+tmp/**
+.rspec_status
