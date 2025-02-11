@@ -9,3 +9,4 @@ end
 
 require_relative "thread_unsafe/module_counter"
 require_relative "thread_unsafe/class_counter"
+require_relative "thread_unsafe/ai_counter"

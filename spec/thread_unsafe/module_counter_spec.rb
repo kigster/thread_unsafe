@@ -10,9 +10,8 @@ module ThreadUnsafe
     let(:iterations) { 1000 }
     let(:safely) { false }
 
-    before { counter.reset }
-
     before do
+      counter.reset
       loops.times do
         threads << Thread.new do
           iterations.times { counter.increment(safely: safely) }
@@ -22,7 +21,7 @@ module ThreadUnsafe
       threads.each(&:join)
     end
 
-    it "should have ten threads" do
+    it "has ten threads" do
       expect(threads.size).to eq(loops)
     end
 
