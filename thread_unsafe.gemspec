@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "A collection of examples of thread-unsafe Ruby code."
   spec.description = "A collection of examples of thread-unsafe Ruby code."
   spec.homepage = "https://github.com/kigster/thread_unsafe"
-  spec.required_ruby_version = ">= 3.1.0"
+  spec.required_ruby_version = ">= 3.3"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/kigster/thread_unsafe"

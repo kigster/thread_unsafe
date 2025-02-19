@@ -21,7 +21,59 @@ gem install thread_unsafe
 
 ## Usage
 
-The gem provides a `ThreadUnsafe` module that can be included in a class to make it thread-unsafe. The module provides a `#thread_unsafe` method that can be used to define thread-unsafe methods.
+The gem provides a `ThreadUnsafe` module that can be included in a class to make it thread-unsafe. 
+
+```ruby
+module CowCounter
+  class << self
+    def included(klass)
+      klass.instance_eval do
+        class << self
+          attr_accessor :cows
+        end
+
+        include ThreadUnsafe::Incrementer
+        incrementable :@cows
+      end
+      
+      klass.cows = 0
+    end
+  end
+end
+
+CowCounter.increment(by: 20, with_mutex: true)
+CowCounter.cows # => 20
+```
+
+Or, using a class:
+
+```ruby
+class ClassCounter
+  include ThreadUnsafe::Incrementer
+  
+  self.incrementable_attribute = :@@count
+  
+  # The following does not work for some reason, but the above assignment does
+  # incrementor :@@count 
+
+  def initialize
+    @@count = 0
+  end
+
+  def count
+    @@count
+  end
+
+  def count=(value)
+    @@count = value
+  end
+end
+
+ClassCounter.increment(by: 1, with_mutex: true)
+ClassCounter.new.count # => 1
+ClassCounter.increment(by: 1, with_mutex: true)
+ClassCounter.new.count # => 2
+```
 
 ## Development
 

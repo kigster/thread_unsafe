@@ -4,9 +4,8 @@ require_relative "thread_unsafe/version"
 
 module ThreadUnsafe
   class Error < StandardError; end
-  # Your code goes here...
 end
 
-require_relative "thread_unsafe/module_counter"
+require_relative "thread_unsafe/incrementer"
+require_relative "thread_unsafe/cow_counter"
 require_relative "thread_unsafe/class_counter"
-require_relative "thread_unsafe/ai_counter"
