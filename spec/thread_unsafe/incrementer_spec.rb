@@ -3,6 +3,7 @@
 require "spec_helper"
 
 module ThreadUnsafe
+  # @description A class that uses our Incrementer module to increment a counter.
   class IncrementerTest
     attr_accessor :sheep_counter
 
@@ -15,6 +16,7 @@ module ThreadUnsafe
     self.incrementable_attribute = :@sheep_counter
   end
 
+  # Starts the specs, now that we have a class to test.
   RSpec.describe Incrementer do
     let(:klass) { IncrementerTest }
 
@@ -57,12 +59,15 @@ module ThreadUnsafe
           end
 
           describe "when delay: #{add_delay} | with_mutex: #{with_mutex}" do
+            # when there is a random delay, and mutex is not used, we get garbage
             if add_delay && !with_mutex
-              it "incrementor correctly updates the counter" do
+              it "incrementor corrupts the counter like a KGB Agent thats terrible at multi-tasking" do
                 expect(instance.__count).not_to eq(initial + thread_count)
               end
             else
-              it "incrementor corrupts the counter like a KGB Agent thats terrible at multi-tasking" do
+              # if there is no delay, multiple threads don't matter since it's all on CPU.
+              # if with_mutex is true, the counter will be protected and would be correct.
+              it "incrementor correctly updates the counter" do
                 expect(instance.__count).to eq(initial + thread_count)
               end
             end
