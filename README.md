@@ -21,6 +21,12 @@ gem install thread_unsafe
 
 ## Usage
 
+For the examples of how we prove that thread unsafe code results in corrupted values, please check the file [`spec/thread_unsafe/incrementer_spec.rb`](https://github.com/kigster/thread_unsafe/blob/main/spec/thread_unsafe/incrementer_spec.rb).
+
+The shared examples for "incrementer" show how with mutex, the result is expected, while without it's completely arbitrary.
+
+### Examples
+
 The gem provides a `ThreadUnsafe` module that can be included in a class to make it thread-unsafe. 
 
 ```ruby

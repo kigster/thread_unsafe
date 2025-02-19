@@ -4,9 +4,9 @@ AllCops:
   TargetRubyVersion: 3.3
   NewCops: enable
 
-require:
-  - rubocop-rake
-  - rubocop-rspec
+plugins:
+- rubocop-rake
+- rubocop-rspec
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
